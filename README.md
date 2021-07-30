@@ -1,6 +1,6 @@
 # Go 框架 Gin 的路由
 
-## 主要内容 路由注册，分组，加token验证
+## 主要内容 路由注册，分组，加token验证，平滑重启Gin
 
 整体目录结构如下，app目录下是项目的所有路由文件，而router.go文件是用来引入app下的路由文件和注册路由的。app下的每一个子目录就是一组路由。
 
@@ -85,6 +85,8 @@ func VerifySign(c *gin.Context) {
 
 }
 ```
+
+在router文件中使用endless监听端口，并配合`kill -1 pid`命令实现平滑重启，不影响已经打开的路由的响应
 
 >此处代码，参考 `https://github.com/xinliangnote/Go` && `https://www.liwenzhou.com/posts/Go/gin_routes_registry/`
 
